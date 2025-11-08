@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AngularJS Directive Example</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body ng-app="myApp">
+
+<!-- Using custom directive -->
+<custom-message></custom-message>
+
+<script>
+  var app = angular.module("myApp", []);
+
+  app.directive("customMessage", function() {
+    return {
+      template: "<h2 style='color: green;'>This is a custom directive in AngularJS!</h2>"
+    };
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>jQuery Event Handling</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    #output {
+      margin-top: 10px;
+      font-weight: bold;
+      color: green;
+    }
+  </style>
+</head>
+<body>
+
+<button id="clickBtn">Click Me</button>
+<button id="dblclickBtn">Double Click Me</button>
+<input type="text" id="textInput" placeholder="Type something here">
+<div id="output"></div>
+
+<script>
+  $(document).ready(function() {
+    $("#clickBtn").click(function() {
+      $("#output").text("Button clicked!");
+    });
+
+    
+    $("#dblclickBtn").dblclick(function() {
+      $("#output").text("Button double-clicked!");
+    });
+
+
+    $("#textInput").keypress(function() {
+      $("#output").text("Key pressed in input!");
+    });
+
+
+    $("#textInput").focus(function() {
+      $(this).css("background-color", "#ffffcc");
+    });
+
+  });
+</script>
+
+</body>
+</html>

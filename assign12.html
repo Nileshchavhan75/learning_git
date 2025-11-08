@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>jQuery Upward Traversing</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+<div class="grandparent">
+  <div class="parent">
+    <p class="child">Click me to traverse upward!</p>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function() {
+    $(".child").click(function() {
+      let parent = $(this).parent();
+      parent.css("border", "2px solid red");
+
+      let allParents = $(this).parents();
+      allParents.css("background-color", "#f0f0f0");
+
+      let closestDiv = $(this).closest(".grandparent");
+      closestDiv.css("padding", "10px");
+    });
+  });
+</script></body>
+</html>

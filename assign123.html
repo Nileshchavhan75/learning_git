@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>jQuery Filtering</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    .item {
+      margin: 5px;
+      padding: 5px;
+      border: 1px solid gray;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="item">Item 1</div> 
+  <div class="item special">Item 2</div>
+  <div class="item">Item 3</div>
+  <div class="item special">Item 4</div>Asign
+</div>
+
+<button id="filterBtn">Filter Items</button>
+
+<script>
+  $(document).ready(function() {
+    $("#filterBtn").click(function() {
+
+      $(".item").first().css("background-color", "#d1e7dd");
+
+      $(".item").last().css("background-color", "#f8d7da");
+
+      $(".item").eq(1).css("font-weight", "bold");
+
+      $(".item").filter(".special").css("border", "2px dashed blue");
+
+      $(".item").not(".special").css("color", "gray");
+    });
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>jQuery Downward Traversing</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+<div class="grandparent" style="border: 1px solid black; padding: 10px;">
+  <div class="parent" style="margin-top: 10px;">
+    <p class="child">Child paragraph 1</p>
+    <p class="child">Child paragraph 2</p>
+  </div>
+</div>
+
+<button id="traverse">Traverse Downward</button>
+
+<script>
+  $(document).ready(function() {
+    $("#traverse").click(function() {
+      $(".grandparent").children().css("border", "2px solid red");
+      $(".grandparent").find("p").css("color", "blue");
+    });
+  });
+</script>
+
+</body>
+</html>
