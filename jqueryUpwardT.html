@@ -1,0 +1,72 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+  <title>Upward Traversing Example</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    div, section, article {
+      padding: 10px;
+      margin: 5px;
+      border: 1px solid black;
+    }
+  </style>
+</head>
+<body>
+<section>
+  <article>
+    <div>
+      <p id="demo">This is a paragraph.</p>
+    </div>
+  </article>
+</section>
+
+<script>
+  $(document).ready(function() {
+    // Immediate parent - div
+    $("#demo").parent().css("background-color", "pink");
+
+    // All ancestors - div, article, section, body, html
+    $("#demo").parents().css("border", "2px dashed green");
+
+    // All ancestors until <section> (section not included)
+    $("#demo").parentsUntil("section").css("background-color", "lightblue");
+  });
+</script>
+
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upward traversing</title>
+    <script src = "https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        div, section, article{
+            padding: 10px;
+            margin: 5px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <article>
+            <div>
+                <p id = "demo">WE trying upward traversing</p>
+            </div>
+        </article>
+    </section>
+
+    <script>
+        $(document).ready(function(){
+            $("#demo").parent().css("background-color", "pink");
+            $("#demo").parents().css("border", "2px dashed green");
+            $("#demo").parentsUntil("section").css("background-color", "lightblue");
+        });
+    </script>
+    
+</body>
+</html>
