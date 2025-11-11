@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AngularJS Filters Example</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body ng-app="">
+
+  <h2>AngularJS Filters</h2>
+
+  <p><strong>Original:</strong> {{ name }}</p>
+  <p><strong>Uppercase:</strong> {{ name | uppercase }}</p>
+  <p><strong>Lowercase:</strong> {{ name | lowercase }}</p>
+  <p><strong>Currency:</strong> {{ amount | currency }}</p>
+  <p><strong>Number:</strong> {{ pi | number:2 }}</p>
+  <p><strong>Date:</strong> {{ today | date:'fullDate' }}</p>
+
+  <script>
+    angular.element(document).ready(function() {
+      var scope = angular.element(document.body).scope();
+      scope.name = "Shivay";
+      scope.amount = 2500;
+      scope.pi = 3.14159;
+      scope.today = new Date();
+      scope.$apply(); // Update bindings manually
+    });
+  </script>
+</body>
+</html>

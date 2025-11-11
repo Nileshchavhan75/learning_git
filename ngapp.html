@@ -1,0 +1,44 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+  <title>ng-app Example</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body ng-app="myApp">
+
+  <div ng-controller="myCtrl">
+    <h2>Welcome to AngularJS</h2>
+    <p>My name is {{ name }}</p>
+  </div>
+
+  <script>
+    var app = angular.module("myApp", []);
+    app.controller("myCtrl", function($scope){
+      $scope.name = "Aryan";
+    });
+  </script> 
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AngularJSEx</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body ng-app="myApp">
+  <div ng-controller = "myCtr">
+    <h2>Welcome to AngularJS</h2>
+    <p>My name is {{name}}</p>
+  </div>
+  <script>
+    var app = angular.module("myApp",[]);
+    app.controller("myCtr", function($scope){
+      $scope.name = "Rahul"
+    })
+  </script>
+
+</body>
+</html>

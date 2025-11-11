@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ng-expression Example</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body ng-app="">
+
+  <h2>ng-expression Example</h2>
+  <p>{{ "Welcome " + "User" }}</p> <!-- Output: Welcome User -->
+
+  <!-- ng-model with expression -->
+  <input type="number" ng-model="a"> +
+  <input type="number" ng-model="b"> =
+  <strong>{{ a + b }}</strong> <!-- Output: sum of a and b -->
+  
+</body>
+</html>

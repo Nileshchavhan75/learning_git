@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ng-bind Example</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body ng-app="myApp">
+
+  <div ng-controller="myCtrl">
+    <h2>Using ng-bind</h2>
+    <input type="text" ng-model="message">
+    <p ng-bind="message"></p>
+  </div>
+
+  <script>
+    var app = angular.module("myApp", []);
+    app.controller("myCtrl", function($scope) {
+      $scope.message = "Hello AngularJS";
+    });
+  </script>
+</body>
+</html>
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ng bind</title>
+  <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body ng-app = "myApp">
+  <div ng-controller = "myCtrl">
+    <h2>Welcome to AngularJS</h2>
+    <input type = "text" ng-model = "massage">
+    <p ng-bind = "massage"></p>
+  </div>
+  <script>
+    var app = angular.module("myApp",[]);
+    app.controller("myCtrl",function($scope){
+      $scope.massage = "Hello Shivay";
+    });
+  </script>
+</body>
+</html> -->
