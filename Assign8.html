@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery Traversing</title>
+    <script
+    src="https://code.jquery.com/jquery-3.7.1.js"
+    integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+    crossorigin="anonymous"></script>
+    <style>
+        .highlight {
+          background-color: yellow;
+        }
+        </style>
+</head>
+<body>
+    <div>
+        <h1>Traversing Down to up</h1>
+        <div>
+            <ol>
+                <li>maza</li>
+                <li>coke</li>
+                <li>orange</li>
+            </ol>
+            <ul>
+                 <li>samosa</li>
+                 <li>dhokala</li>
+                 <li>fhafda</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+     $(document).ready(function () {
+
+        // Downward Traversing: find() – find all <li> under <ol>
+            $('ol').find('li').eq(1).addClass('highlight'); // highlights "coke"
+
+            // Upward Traversing: parent()
+            $('li:contains("dhokala")').parent().css('border', '2px solid red');
+
+            // Sideways Traversing: next()
+            $('li:contains("samosa")').next().css('color', 'green'); // "dhokala"
+
+             // Sideways Traversing: prev()
+            $('li:contains("fhafda")').prev().css('color', 'blue'); // "dhokala"
+
+            // Closest ancestor: closest()
+            $('li:contains("orange")').closest('ol').css('background-color', '#f0f0f0');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Form Practice</title>
+</head>
+<body>
+    <form action="/action">
+        <div>
+            <label for="username">Enter your Name: </label>
+            <input type="text" placeholder="Full Name" id="username"/>
+        </div>
+        <div>
+            <label for="Email">Enter your Email: </label>
+            <input type="email" id="Email" placeholder="Enter valid Email"/>
+        </div>
+        <div>
+            <label>Sex: </label>
+            <input type="radio" name="gender" id="Male" value="male"/>
+            <label for="Male">Male</label>
+            <input type="radio" name="gender" id="Female" value="Female"/>
+            <label for="Female">Female</label>
+            <input type="radio" name="gender" id="Other" value="Other"/>
+            <label for="Other">Other</label>
+        </div>
+        <div>
+            <label for="course">Select Course: </label>
+            <select name="course" id="course">
+                <option value="BCA">BCA</option>
+                <option value="BSC">BSC</option>
+                <option value="BTech">BTech</option>
+            </select>
+        </div>
+        <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
+    </form>
+</body>
+</html>
