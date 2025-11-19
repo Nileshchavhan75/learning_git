@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>circle</title>
+</head>
+<body>
+    <canvas id = "myClass" width="500" height="500" style="border: 5px solid black;"></canvas>
+    <script>
+        var canvas = document.getElementById("myClass");
+        var ctx = canvas.getContext("2d");
+        ctx.beginPath();
+        ctx.arc(200,200,100,0,2*Math.PI);
+       
+        ctx.fillStyle = "yellow";
+        ctx.fill();
+        
+        ctx.stroke();
+    </script>
+</body>
+</html>

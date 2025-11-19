@@ -1,14 +1,209 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>HTML Frameset Example</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Typing Speed Test</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-<!-- Divides the screen: 30% for header, 70% for the rest -->
-<frameset rows="30%,70%">
-    <frame src="header.html" name="header">
-    <frameset cols="30%,70%">
-        <frame src="sidebar.html" name="sidebar">
-        <frame src="content.html" name="content">
-    </frameset>
-</frameset>
+<body>
+  <div class="container">
+    <div class="top-bar">
+      <h2>Welcome, <span id="username">User</span>!</h2>
+      <button onclick="logout()" class="logout-btn">Logout</button>
+    </div>
+    <h1>Typing Speed Test</h1>
+    <p class="instructions">Start typing below. The timer will begin automatically.</p>
+  
+    <!-- Timer Settings -->
+    <div class="timer-settings">
+      <label for="timer-select">Choose Timer Duration:</label>
+      <select id="timer-select">
+        <option value="30">30 seconds</option>
+        <option value="60" selected>60 seconds</option>
+        <option value="120">120 seconds</option>
+      </select>
+      <button id="start-btn">Start Test</button>
+    </div>
+
+    <!-- Text for Typing -->
+    <div class="text-container">
+      <p id="typing-text">
+        The quick brown fox jumps over the lazy dog. This typing test helps you track your speed and accuracy over time.
+      </p>
+    </div>
+
+    <!-- User Input -->
+    <textarea id="input-field" placeholder="Start typing here..." autofocus disabled></textarea>
+
+    <!-- Info Section -->
+    <div class="info">
+      <p id="timer">Time Left: 60s</p>
+      <p id="wpm">WPM: 0</p>
+      <p id="accuracy">Accuracy: 0%</p>
+    </div>
+
+    <button id="stop-btn" disabled>Stop Test</button>
+  </div>
+
+  <!-- Test Completion Result -->
+  <div id="result-container" style="display: none; margin-top: 20px;">
+    <h2>Test Completed!</h2>
+    <p id="final-wpm">WPM: 0</p>
+    <p id="final-accuracy">Accuracy: 0%</p>
+    <button onclick="restartTest()" class="logout-btn">Restart Test</button>
+  </div>
+
+  <script>
+    // Check if user is logged in
+    const currentUser = localStorage.getItem("currentUser");
+    if (!currentUser) {
+      alert("Please login first.");
+      window.location.href = "login.html";
+    } else {
+      document.getElementById("username").innerText = currentUser;
+    }
+
+    // Dashboard - Show Welcome, Best WPM and Accuracy
+    function loadDashboard() {
+      const bestWPM = localStorage.getItem("bestWPM") || 0;
+      const bestAccuracy = localStorage.getItem("bestAccuracy") || 0;
+      document.getElementById("best-wpm").innerText = bestWPM;
+      document.getElementById("best-accuracy").innerText = bestAccuracy;
+
+      // Load previous test history
+      const testHistory = JSON.parse(localStorage.getItem("testHistory")) || [];
+      const historyList = document.getElementById("test-history");
+      historyList.innerHTML = ''; // Clear previous history
+      testHistory.forEach(test => {
+        const listItem = document.createElement("li");
+        listItem.textContent = `WPM: ${test.wpm}, Accuracy: ${test.accuracy}%`;
+        historyList.appendChild(listItem);
+      });
+    }
+
+    // Logout function
+    function logout() {
+      localStorage.removeItem("currentUser");
+      window.location.href = "login.html";
+    }
+
+    // Randomly Pick a Paragraph from a List of Paragraphs
+    const typingTexts = [
+      "The quick brown fox jumps over the lazy dog. This typing test helps you track your speed and accuracy over time.",
+      "A journey of a thousand miles begins with a single step. Keep moving forward, and you'll reach your goals.",
+      "In the middle of difficulty lies opportunity. Stay persistent, and you will overcome any challenge.",
+      "The only way to do great work is to love what you do. Never stop learning, and always aim for improvement.",
+      "Success is not final, failure is not fatal: It is the courage to continue that counts."
+    ];
+
+    let textToType = typingTexts[Math.floor(Math.random() * typingTexts.length)].trim();
+    document.getElementById('typing-text').textContent = textToType;
+
+    // Timer & WPM Logic
+    let timer, timeLeft, totalTyped = 0, correctTyped = 0, timerRunning = false;
+    const inputField = document.getElementById("input-field");
+    const timerDisplay = document.getElementById("timer");
+    const wpmDisplay = document.getElementById("wpm");
+    const accuracyDisplay = document.getElementById("accuracy");
+    const stopButton = document.getElementById("stop-btn");
+
+    let timerInterval;
+
+    // Start Button Logic
+    document.getElementById("start-btn").addEventListener("click", function() {
+      const selectedTime = parseInt(document.getElementById("timer-select").value);
+      startTypingTest(selectedTime);
+    });
+
+    function startTypingTest(selectedTime) {
+      timer = selectedTime;
+      timeLeft = timer;
+      timerDisplay.textContent = `Time Left: ${timeLeft}s`;
+      inputField.disabled = false;
+      inputField.value = "";  // Clear any previous text
+      stopButton.disabled = false;
+      inputField.focus(); // Auto-focus on the input field
+      timerRunning = true;
+      wpmDisplay.textContent = `WPM: 0`;
+      accuracyDisplay.textContent = `Accuracy: 0%`;
+      document.getElementById("result-container").style.display = "none";
+      textToType = typingTexts[Math.floor(Math.random() * typingTexts.length)].trim();
+      document.getElementById('typing-text').textContent = textToType; // Reset the text
+      startTimer();
+    }
+
+    function startTimer() {
+      timerInterval = setInterval(function() {
+        timeLeft--;
+        timerDisplay.textContent = `Time Left: ${timeLeft}s`;
+        if (timeLeft <= 0) {
+          clearInterval(timerInterval);
+          stopTest();
+        }
+      }, 1000);
+    }
+
+    function stopTest() {
+      clearInterval(timerInterval);
+      inputField.disabled = true;
+      stopButton.disabled = true;
+      calculateResults();
+    }
+
+    function calculateResults() {
+      const typedText = inputField.value;
+      totalTyped = typedText.length;
+
+      let correctCount = 0;
+      let highlightedText = '';
+
+      for (let i = 0; i < typedText.length; i++) {
+        if (typedText[i] === textToType[i]) {
+          correctCount++;
+          highlightedText += `<span style="color: green;">${typedText[i]}</span>`;
+        } else {
+          highlightedText += `<span style="color: red;">${typedText[i]}</span>`;
+        }
+      }
+
+      document.getElementById('typing-text').innerHTML = highlightedText + textToType.slice(typedText.length);
+
+      correctTyped = correctCount;
+
+      let wordsTyped = totalTyped / 5;
+      let wpm = Math.round((wordsTyped / timer) * 60);
+      let accuracy = totalTyped > 0 ? ((correctTyped / totalTyped) * 100).toFixed(2) : 0;
+
+      wpmDisplay.textContent = `WPM: ${wpm}`;
+      accuracyDisplay.textContent = `Accuracy: ${accuracy}%`;
+
+      // Save results to LocalStorage
+      const bestWPM = localStorage.getItem("bestWPM") || 0;
+      const bestAccuracy = localStorage.getItem("bestAccuracy") || 0;
+
+      if (wpm > bestWPM) {
+        localStorage.setItem("bestWPM", wpm);
+      }
+      if (accuracy > bestAccuracy) {
+        localStorage.setItem("bestAccuracy", accuracy);
+      }
+
+      // Save test history
+      const testHistory = JSON.parse(localStorage.getItem("testHistory")) || [];
+      testHistory.push({ wpm: wpm, accuracy: accuracy });
+      localStorage.setItem("testHistory", JSON.stringify(testHistory));
+
+      document.getElementById("result-container").style.display = "block";
+      document.getElementById("final-wpm").textContent = `WPM: ${wpm}`;
+      document.getElementById("final-accuracy").textContent = `Accuracy: ${accuracy}%`;
+    }
+
+    function restartTest() {
+      document.getElementById("result-container").style.display = "none";
+      startTypingTest(60);
+    }
+  </script>
+
+</body>
 </html>

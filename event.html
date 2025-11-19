@@ -1,16 +1,46 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title>event</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Handling Example</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            margin-top: 50px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: blue;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: darkblue;
+        }
+    </style>
 </head>
 <body>
-	<button id = "colorBtn">change color</button>
-	<script>
-	document.getElementById("colorBtn").addEventListener("click",function(){
-	document.body.style.backgroundColor = 
-	"#" + Math.floor(Math.random() * 16777215).toString(16);
-	});
-	</script>
 
+    <h2>Click the button to change background color</h2>
+    <button id="colorBtn">Change Color</button>
+
+    <script>
+        let button = document.getElementById("colorBtn");
+        function getRandomColor() {
+            let letters = "0123456789ABCDEF";
+            let color = "#";
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+        button.addEventListener("click", function() {
+            document.body.style.backgroundColor = getRandomColor();
+        });
+    </script>
 </body>
 </html>

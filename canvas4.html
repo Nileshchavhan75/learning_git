@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas Rectangle</title>
+</head>
+<body>
+    <canvas id="myCanvas" width="400" height="400" style="border: 2px solid black;"></canvas>
+    
+    <script>
+        var canvas = document.getElementById("myCanvas");
+        var ctx = canvas.getContext("2d");
+         // Rectangle using rect() method
+        ctx.beginPath();
+        ctx.rect(125, 200, 100, 100);
+        ctx.fillStyle = "green";
+        ctx.fill();
+        ctx.strokeStyle = "black";
+        ctx.lineWidth = 4;
+        ctx.stroke();
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<form onsubmit="submitForm(event)">
+  Name: <input type="text"><br><br>
+  Course: <input type="text"><br><br>
+  <button type="submit">Submit</button>
+</form>
+
+<script>
+function submitForm(e) {
+  e.preventDefault();
+  let code = prompt("Enter confirmation code:");
+  if (code) alert("Success!");
+}
+</script>
+
+</body>
+</html>

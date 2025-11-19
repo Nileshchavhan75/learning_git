@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pseudo-classes Example</title>
+    <style>
+        button:hover {
+            background-color: red;
+            color: white;
+        }
+
+        input:focus {
+            border: 2px solid blue;
+        }
+
+        p:first-child {
+            font-weight: bold;
+            color: purple;
+        }
+
+        input:checked {
+            outline: 2px solid green;
+        }
+    </style>
+</head>
+<body>
+    <button>Hover Over Me</button>
+    <br><br>
+    <input type="text" placeholder="Focus here">
+    <br><br>
+    <div>
+        <p>First paragraph</p>
+        <p>Second paragraph</p>
+    </div>
+    <br>
+    <input type="checkbox"> Check Me
+</body>
+</html>

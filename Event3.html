@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event in javascipt</title>
+</head>
+<body>
+    <button id = "colorBtn"> change Color</button>
+
+    <script>
+        document.getElementById("colorBtn").addEventListener("click",function(){
+            document.body.style.backgroundColor = 
+            "#" + Math.floor(Math.random() * 1677716).toString(16);
+        });
+
+    </script>
+</body>
+</html>

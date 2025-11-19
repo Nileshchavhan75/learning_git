@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>form</title>
+    </head>
+    <body>
+        <form onsubmit="handleSubmit(event)">
+        Name:<input type = "text" id = "name"><br><br>
+        course:<input type="text" id = "course"><br><br>
+        <button type="submit">submit</button>
+        </form>
+        <script>
+            function handleSubmit(e){
+               e.preventDefault();
+               var code = prompt("Enter conformation code: ");
+               if(code){
+                alert("success!, form sumbmmited");
+               }else{
+                alert("form submission cancel")
+               }
+            }
+        </script>
+    </body>
+</html>

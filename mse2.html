@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Form</title>
+</head>
+<body>
+
+  <form onsubmit="handleSubmit(event)">
+    Name: <input type="text" id="name"><br><br>
+    Course: <input type="text" id="course"><br><br>
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    function handleSubmit(e) {
+      e.preventDefault();
+      var code = prompt("Enter confirmation code:");
+      if (code) {
+        alert("Success! Form submitted.");
+      } else {
+        alert("Form submission cancelled.");
+      }
+    }
+  </script>
+</body>
+</html>
+
+

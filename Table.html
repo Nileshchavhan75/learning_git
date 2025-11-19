@@ -3,31 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Table in HTML</title>
+    <title>Table Tag Attribute</title>
 </head>
 <body>
-    <table border="2">
-        <caption><b>Food Menu</b></caption>
+    <table border="black">
+        <caption>Food Item</caption>
         <thead>
             <tr>
-                <th>Items</th>
-                <th>Price</th>
+                <th rowspan="2">Item</th>
+                <th colspan="2">price</th>
             </tr>
-        </thead>
+            <tr>
+                <th>INR</th>
+                <th>USD</th>
+            </tr>
+        </thead>    
         <tbody>
             <tr>
-                <td>Samosa</td>
+                <td>Dhokla</td>
                 <td>20</td>
+                <td>0.14</td>
             </tr>
             <tr>
-                <td>Frooti</td>
-                <td>20</td>
+                <td>samosa</td>
+                <td>25</td>
+                <td>0.20</td>
             </tr>
             <tr>
-                <td>Chips</td>
-                <td>10</td>
+                <td>kachori</td>
+                <td>15</td>
+                <td>0.12</td>
             </tr>
         </tbody>
     </table>
+    
 </body>
 </html>

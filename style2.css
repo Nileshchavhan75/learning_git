@@ -1,0 +1,50 @@
+/* Header Styling */
+header h1 {
+    background-color: brown;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+/* Navigation Bar Styling */
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex; /* Makes the links horizontal */
+    gap: 15px;
+    background-color: gray;
+    padding: 10px;
+}
+
+nav li {
+    display: inline;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    background-color: blue;
+    padding: 10px 15px;
+    border-radius: 5px;
+}
+
+nav a:hover {
+    background-color: darkblue;
+}
+
+/* Main Section Styling */
+main {
+    border: 2px solid black;
+    padding: 20px;
+    margin: 20px;
+    background-color: lightgray;
+}
+
+/* Footer Styling */
+footer {
+    text-align: center;
+    background-color: black;
+    color: white;
+    padding: 10px;
+}

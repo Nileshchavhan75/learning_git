@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>transition</title>
+    <style>
+        div{
+            height: 200px;
+            width: 200px;
+            background-color: blue;
+            transition: 1s;
+            transition-timing-function: linear;
+        }
+        div:hover{
+            background-color: black;
+        }
+        button {
+        background-color: blue;
+        color: white;
+        padding: 10px 20px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.5s ease;
+    }
+
+button:hover {
+    background-color: red;
+}
+
+    </style>
+</head>
+<body>
+    <div>
+    </div>
+    <button>Click</button>
+</body>
+</html>
